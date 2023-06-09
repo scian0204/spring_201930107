@@ -40,7 +40,7 @@ public class SignController {
     }
 
     @GetMapping("/exception")
-    public void exception() throws RuntimeException {
-        throw new RuntimeException("접근이 금지되었습니다.");
+    public ResponseEntity<String> exception() {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("권한이 없습니다.");
     }
 }
