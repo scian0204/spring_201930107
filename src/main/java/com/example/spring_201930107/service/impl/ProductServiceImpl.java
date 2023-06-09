@@ -33,7 +33,13 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductResponseDto updateProduct(ProductUpdateDto productUpdateDto) throws Exception{
-        return new ProductResponseDto(productDAO.updateProduct(productUpdateDto.getNumber(), productUpdateDto.getName()));
+        Product product = new Product();
+        product.setNumber(productUpdateDto.getNumber());
+        product.setName(productUpdateDto.getName());
+        product.setPrice(productUpdateDto.getPrice());
+        product.setStock(productUpdateDto.getStock());
+        product.setUpdatedAt(LocalDateTime.now());
+        return new ProductResponseDto(productDAO.updateProduct(product));
     }
 
     @Override

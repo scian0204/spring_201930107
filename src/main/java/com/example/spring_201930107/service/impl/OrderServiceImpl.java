@@ -36,7 +36,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<OrderResponseDto> getAllOrdersByProductId(String productId) {
+    public List<OrderResponseDto> getAllOrdersByProductId(long productId) {
         return orderDAO.getAllOrdersByProductId(productId)
                 .stream().map(OrderResponseDto::new)
                 .collect(Collectors.toList());

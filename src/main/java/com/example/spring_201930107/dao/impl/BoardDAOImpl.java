@@ -47,14 +47,17 @@ public class BoardDAOImpl implements BoardDAO {
     }
 
     @Override
-    public void deleteBoard(Long id, String token) {
+    public boolean deleteBoard(Long id, String token) {
         Optional<Board> preBoardOpt = boardRepository.findById(id);
+        boolean flag = false;
         if (preBoardOpt.isPresent()) {
             Board preBoard = preBoardOpt.get();
             if (preBoard.getUserId().equals(jwtTokenProvider.getUsername(token))) {
                 boardRepository.delete(preBoard);
+                flag = true;
             }
         }
+        return flag;
     }
 
     @Override

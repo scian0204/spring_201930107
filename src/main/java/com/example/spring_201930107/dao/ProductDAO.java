@@ -12,7 +12,7 @@ public interface ProductDAO {
 
     Product addProduct(Product product);
 
-    Product updateProduct(Long number, String name) throws Exception;
+    Product updateProduct(Product product) throws Exception;
 
     void deleteProduct(long number) throws Exception;
     List<Product> getAllProducts();

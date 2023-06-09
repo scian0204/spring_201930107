@@ -12,7 +12,7 @@ public interface OrderDAO {
 
     List<Order> getAllOrdersByUserId(String userId);
 
-    List<Order> getAllOrdersByProductId(String productId);
+    List<Order> getAllOrdersByProductId(long productId);
 
     Order getOrderById(Long id);
 }

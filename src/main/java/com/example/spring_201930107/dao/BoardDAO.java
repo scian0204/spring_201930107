@@ -11,7 +11,7 @@ public interface BoardDAO {
 
     Board writeBoard(Board board, String token);
 
-    void deleteBoard(Long id, String token);
+    boolean deleteBoard(Long id, String token);
 
     List<Board> getAll();
 

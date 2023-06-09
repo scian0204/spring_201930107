@@ -6,6 +6,6 @@ import javax.persistence.Column;
 
 @Data
 public class OrderRequestDto {
-    private String productId;
+    private long productId;
     private int price;
 }

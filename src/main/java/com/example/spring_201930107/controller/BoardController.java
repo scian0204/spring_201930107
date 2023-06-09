@@ -35,8 +35,9 @@ public class BoardController {
     @DeleteMapping("")
     public ResponseEntity<String> updateBoard(@RequestParam Long id, HttpServletRequest request) {
         String token = request.getHeader("X-AUTH-TOKEN");
-        boardService.deleteBoard(id, token);
-        return ResponseEntity.status(HttpStatus.OK).body("정상적으로 삭제되었습니다.");
+        boolean flag = boardService.deleteBoard(id, token);
+        String resMsg = flag ? "정상적으로 삭제되었습니다." : "글이 존재하지 않거나 다른 유저의 글입니다.";
+        return ResponseEntity.status(HttpStatus.OK).body(resMsg);
     }
 
     @Operation(summary = "게시판 리스트 - 누구나")

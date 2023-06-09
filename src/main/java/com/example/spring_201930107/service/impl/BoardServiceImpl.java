@@ -39,8 +39,8 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public void deleteBoard(Long id, String token) {
-        boardDAO.deleteBoard(id, token);
+    public boolean deleteBoard(Long id, String token) {
+        return boardDAO.deleteBoard(id, token);
     }
 
     @Override

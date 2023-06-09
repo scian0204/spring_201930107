@@ -21,13 +21,12 @@ public class ProductDAOImpl implements ProductDAO {
     }
 
     @Override
-    public Product updateProduct(Long number, String name) throws Exception {
-        Optional<Product> productOptional = productRepository.findById(number);
+    public Product updateProduct(Product product) throws Exception {
+        Optional<Product> productOptional = productRepository.findById(product.getNumber());
         Product updatedProduct;
         if (productOptional.isPresent()) {
-            Product product = productOptional.get();
-            product.setName(name);
-            product.setUpdatedAt(LocalDateTime.now());
+            Product productGet = productOptional.get();
+            product.setCreatedAt(productGet.getCreatedAt());
             updatedProduct = productRepository.save(product);
         } else throw new Exception();
 

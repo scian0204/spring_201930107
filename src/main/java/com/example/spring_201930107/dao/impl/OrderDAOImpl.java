@@ -28,11 +28,11 @@ public class OrderDAOImpl implements OrderDAO {
 
     @Override
     public Order buy(OrderRequestDto orderRequestDto, String token) {
-        Product product = productDAO.getProductByNumber(Long.parseLong(orderRequestDto.getProductId()));
+        Product product = productDAO.getProductByNumber(orderRequestDto.getProductId());
         Order order = new Order();
         if (product.getStock() > 0 && product.getPrice() <= orderRequestDto.getPrice()) {
             User user = userDAO.loadUserByUsername(jwtTokenProvider.getUsername(token));
-            order.setProductId(product.getNumber().toString());
+            order.setProductId(product.getNumber());
             order.setProductName(product.getName());
             order.setUserId(user.getUid());
             order.setUserName(user.getName());
@@ -58,7 +58,7 @@ public class OrderDAOImpl implements OrderDAO {
     }
 
     @Override
-    public List<Order> getAllOrdersByProductId(String productId) {
+    public List<Order> getAllOrdersByProductId(long productId) {
         return orderRepository.findAllByProductId(productId);
     }
 

@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class OrderResponseDto {
     private long id;
-    private String productId;
+    private long productId;
     private String productName;
     private String userId;
     private String userName;

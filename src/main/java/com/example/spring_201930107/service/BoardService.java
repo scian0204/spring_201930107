@@ -11,7 +11,7 @@ public interface BoardService {
 
     BoardResponseDto writeBoard(BoardRequestDto boardRequestDto, String token);
 
-    void deleteBoard(Long id, String token);
+    boolean deleteBoard(Long id, String token);
 
     List<BoardResponseDto> getAll();
 

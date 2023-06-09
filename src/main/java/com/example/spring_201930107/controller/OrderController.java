@@ -37,7 +37,7 @@ public class OrderController {
     }
     @Operation(summary = "상품별 주문 리스트 (상품 아이디를 통해) - ADMIN 만 볼 수 있음")
     @GetMapping("/listByProductId")
-    public ResponseEntity<List<OrderResponseDto>> getAllOrdersByProductId(@RequestParam String productId) {
+    public ResponseEntity<List<OrderResponseDto>> getAllOrdersByProductId(@RequestParam long productId) {
         return ResponseEntity.status(HttpStatus.OK).body(orderService.getAllOrdersByProductId(productId));
     }
     @Operation(summary = "주문 정보 - 아이디를 통해 가져오기, ADMIN 만 볼 수 있음")
